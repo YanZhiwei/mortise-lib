@@ -1,4 +1,4 @@
-function nextRandomString(lenght: number = 8): string {
+function nextRandomString(length: number = 8): string {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
