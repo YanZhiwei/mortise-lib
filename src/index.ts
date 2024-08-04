@@ -1,5 +1,12 @@
 import "./customIdElement";
 console.log("customIdElement test");
-const testCustomIdElement = document.getElementById("divCustomId");
-testCustomIdElement?.setCustomId();
-console.log(testCustomIdElement?.getCustomId());
+
+const customIdElement = document.getElementById('btnsetCustomId')
+if(customIdElement!=null){
+    console.log('customIdElement is not null')
+    customIdElement.addEventListener('click',()=>{
+        console.log('customIdElement is clicked');
+        customIdElement.setCustomId();
+        console.log('customIdElement.getCustomId()',customIdElement.getCustomId());
+    });
+}
