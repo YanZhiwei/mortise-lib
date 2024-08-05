@@ -1,4 +1,5 @@
 import { nextRandomString } from "./utils/string";
+import $ from "jquery";
 const CustomIdAttribute = "mortise_custom_id";
 declare global {
   interface HTMLElement {
@@ -12,17 +13,14 @@ interface HTMLElement {
 }
 
 HTMLElement.prototype.setCustomId = function () {
-  if (!this.hasAttribute(CustomIdAttribute)) {
+  if ($(this).attr(CustomIdAttribute) == undefined) {
     var id = this.tagName.toLowerCase() + "_" + nextRandomString(8);
-    console.log("setCustomId", id)
-    this.setAttribute(CustomIdAttribute, id);
+    $(this).attr(CustomIdAttribute, id);
   }
 };
 
 HTMLElement.prototype.getCustomId = function () {
-  if (!this.hasAttribute(CustomIdAttribute)) {
-    return null;
-  }
-  return this.getAttribute(CustomIdAttribute);
+  const atrrValue = $(this).attr(CustomIdAttribute);
+  return atrrValue == undefined ? "" : atrrValue;
 };
 export {};
