@@ -1,10 +1,20 @@
 import { nextRandomString } from "./utils/string";
 import $ from "jquery";
 const CustomIdAttribute = "mortise_custom_id";
+
 declare global {
   interface HTMLElement {
     setCustomId(): void;
     getCustomId(): string | null;
+    getUrl(): string;
+    getTitle(): string;
+    getValue(): string;
+    isVisible(): boolean;
+    isLeaf(): boolean;
+    isFrame(): boolean;
+    isMainFrame(): boolean;
+    isChecked():boolean;
+    getFrameIndex(): number;
   }
 }
 interface HTMLElement {
@@ -23,4 +33,5 @@ HTMLElement.prototype.getCustomId = function () {
   const atrrValue = $(this).attr(CustomIdAttribute);
   return atrrValue == undefined ? "" : atrrValue;
 };
+
 export {};
