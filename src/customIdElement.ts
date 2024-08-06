@@ -15,6 +15,8 @@ declare global {
     isMainFrame(): boolean;
     isChecked():boolean;
     getFrameIndex(): number;
+    canInput():boolean;
+    canCheck():boolean;
   }
 }
 interface HTMLElement {

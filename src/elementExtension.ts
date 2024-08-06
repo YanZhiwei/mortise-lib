@@ -9,6 +9,8 @@ interface HTMLElement {
   isMainFrame(): boolean;
   isChecked(): boolean;
   getFrameIndex(): number;
+  canInput(): boolean;
+  canCheck(): boolean;
 }
 HTMLElement.prototype.getUrl = function () {
   var elem = $(this);
@@ -98,5 +100,39 @@ HTMLElement.prototype.getFrameIndex = function (): number {
     }
   }
   return index;
+};
+
+HTMLElement.prototype.canInput = function (): boolean {
+  const tagName = this.tagName.toLowerCase();
+  if (tagName === "input") {
+    const e = this as HTMLInputElement;
+    if (e.readOnly) return false;
+    if (e.disabled) return false;
+    const type = e.type.toLowerCase();
+    if (
+      type === "text" ||
+      type === "password" ||
+      type === "search" ||
+      type === "textarea"
+    ) {
+      return e.readOnly === false;
+    }
+  }
+  return false;
+};
+
+HTMLElement.prototype.canCheck = function (): boolean {
+  const tagName = this.tagName.toLowerCase();
+  if (tagName === "input") {
+    const e = this as HTMLInputElement;
+    if (e.readOnly) return false;
+    if (e.disabled) return false;
+    const type = e.type.toLowerCase();
+    if (type === "checkbox" || type === "radio") {
+      return (<any>e).readonly ? false : true;
+    }
+    return false;
+  }
+  return false;
 };
 export {};
