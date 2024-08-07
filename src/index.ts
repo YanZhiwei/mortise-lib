@@ -58,3 +58,12 @@ if (getFrameIndex != null) {
     console.log("getFrameIndex.getFrameIndex()", getFrameIndex.getFrameIndex());
   });
 }
+
+const getPaddingElement = document.getElementById("btngetPadding");
+if (getPaddingElement != null) {
+  console.log("getPadding is not null");
+  getPaddingElement.addEventListener("click", () => {
+    console.log("getPadding is clicked");
+    console.log("getPadding.getPadding()", getPaddingElement.getPadding());
+  });
+}

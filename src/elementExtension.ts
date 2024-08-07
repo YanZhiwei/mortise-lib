@@ -11,6 +11,10 @@ interface HTMLElement {
   getFrameIndex(): number;
   canInput(): boolean;
   canCheck(): boolean;
+  getPadding(): {
+    paddingTop: number;
+    paddingLeft: number;
+  };
 }
 HTMLElement.prototype.getUrl = function () {
   var elem = $(this);
@@ -134,5 +138,22 @@ HTMLElement.prototype.canCheck = function (): boolean {
     return false;
   }
   return false;
+};
+
+HTMLElement.prototype.getPadding = function (): {
+  paddingTop: number;
+  paddingLeft: number;
+} {
+  if (window.getComputedStyle) {
+    return {
+      paddingLeft: parseInt(window.getComputedStyle(this).paddingLeft),
+      paddingTop: parseInt(window.getComputedStyle(this).paddingTop),
+    };
+  } else {
+    return {
+      paddingTop: parseInt($(this).css("padding-top")),
+      paddingLeft: parseInt($(this).css("padding-left")),
+    };
+  }
 };
 export {};

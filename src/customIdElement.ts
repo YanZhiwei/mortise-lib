@@ -17,6 +17,10 @@ declare global {
     getFrameIndex(): number;
     canInput():boolean;
     canCheck():boolean;
+    getPadding(): {
+      paddingTop: number;
+      paddingLeft: number;
+    };
   }
 }
 interface HTMLElement {
